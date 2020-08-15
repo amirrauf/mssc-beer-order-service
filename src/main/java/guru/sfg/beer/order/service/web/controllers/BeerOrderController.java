@@ -51,6 +51,8 @@ public class BeerOrderController {
         if (pageSize == null || pageSize < 1) {
             pageSize = DEFAULT_PAGE_SIZE;
         }
+        
+        System.out.println("Customer + ID " + customerId);
 
         return beerOrderService.listOrders(customerId, PageRequest.of(pageNumber, pageSize));
     }
