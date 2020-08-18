@@ -33,6 +33,17 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
         sendBeerOrderEvent(savedBeerOrder, BeerOrderEventEnum.VALIDATE_ORDER);
         return savedBeerOrder;
     }
+    
+    @Transactional
+    @Override
+    public BeerOrder validateBeerOrder(BeerOrder beerOrder) {
+        beerOrder.setOrderStatus(BeerOrderStatusEnum.VALIDATION_PENDING);
+
+        BeerOrder savedBeerOrder = beerOrderRepository.save(beerOrder);
+        sendBeerOrderEvent(savedBeerOrder, BeerOrderEventEnum.VALIDATE_ORDER);
+        return savedBeerOrder;
+    }
+    
 
     private void sendBeerOrderEvent(BeerOrder beerOrder, BeerOrderEventEnum eventEnum){
         StateMachine<BeerOrderStatusEnum, BeerOrderEventEnum> sm = build(beerOrder);
