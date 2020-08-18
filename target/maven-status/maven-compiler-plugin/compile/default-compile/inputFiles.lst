@@ -1,6 +1,7 @@
 C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\repositories\BeerOrderRepository.java
 C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\web\controllers\BeerOrderController.java
 C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\repositories\CustomerRepository.java
+C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\config\JmsConfig.java
 C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\domain\BaseEntity.java
 C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\services\beer\BeerServiceImpl.java
 C:\apps\mssc-beer-order-service\src\main\java\guru\sfg\beer\order\service\web\model\CustomerDto.java

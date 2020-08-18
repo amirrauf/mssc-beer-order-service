@@ -15,6 +15,7 @@ guru\sfg\beer\order\service\web\model\BeerOrderLineDto$BeerOrderLineDtoBuilder.c
 guru\sfg\beer\order\service\domain\BeerOrder$BeerOrderBuilder.class
 guru\sfg\beer\order\service\web\mappers\BeerOrderMapperImpl.class
 guru\sfg\beer\order\service\web\mappers\BeerOrderLineMapperDecorator.class
+guru\sfg\beer\order\service\config\JmsConfig.class
 guru\sfg\beer\order\service\web\mappers\DateMapper.class
 guru\sfg\beer\order\service\web\model\CustomerDto$CustomerDtoBuilder.class
 guru\sfg\beer\order\service\config\TaskConfig.class
