@@ -145,4 +145,15 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
             beerOrderRepository.saveAndFlush(allocatedOrder);
         }, () -> log.error("Order Not Found. Id: " + beerOrderDto.getId()));
     }
+
+	@Override
+	public void beerOrderPickedUp(UUID uuid) {
+		Optional<BeerOrder> beerOrderOptional = beerOrderRepository.findById(uuid);
+        beerOrderOptional.ifPresentOrElse(beerOrder -> {
+            sendBeerOrderEvent(beerOrder, BeerOrderEventEnum.BEERORDER_PICKED_UP);
+        }, () -> log.error("Order Id Not Found: " + uuid ));
+		
+		
+	}
+
 }
