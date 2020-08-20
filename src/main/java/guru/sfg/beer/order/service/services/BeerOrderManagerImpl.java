@@ -3,6 +3,8 @@ package guru.sfg.beer.order.service.services;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
@@ -29,6 +31,7 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
 	private final StateMachineFactory<BeerOrderStatusEnum, BeerOrderEventEnum> stateMachineFactory;
     private final BeerOrderRepository beerOrderRepository;
     private final BeerOrderStateChangeInterceptor beerOrderStateChangeInterceptor;
+    private final EntityManager entityManager;
 
     @Transactional
     @Override
@@ -153,6 +156,15 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
             sendBeerOrderEvent(beerOrder, BeerOrderEventEnum.BEERORDER_PICKED_UP);
         }, () -> log.error("Order Id Not Found: " + uuid ));
 		
+		
+	}
+
+	@Override
+	public void cancelOrder(UUID uuid) {
+		Optional<BeerOrder> beerOrderOptional = beerOrderRepository.findById(uuid);
+        beerOrderOptional.ifPresentOrElse(beerOrder -> {
+            sendBeerOrderEvent(beerOrder, BeerOrderEventEnum.CANCEL_ORDER);
+        }, () -> log.error("Order Id Not Found: " + uuid ));
 		
 	}
 
